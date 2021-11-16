@@ -1,4 +1,4 @@
-	   LXI D,07D0
+	   LXI D,FFFF
 	   CALL DELAY
 	   HLT
 ;delay: this subroutine produces delay
