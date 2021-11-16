@@ -81,7 +81,7 @@
         \end{figure}
     \subsection{Conclusion}
         We see that after the execution of program, the data stored in HL register pair is 01D1H, which is the hexadecimal value of 435.\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
 \newpage
 
 \section[Find minimum and maximum number in 10-byte unsigned array]{Assignment 2} %[toc content]{text content}
@@ -115,7 +115,7 @@
         \end{figure}
     \subsection{Conclusion}
         We see that that after program execution, B has the maximum value of array, and C has the minimum value of the array.\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
 \newpage
 
 \section[Delay Procedure]{Assignment 3} %[toc content]{text content}
@@ -135,7 +135,7 @@
     %     \end{center}
     \subsection{Conclusion}
         We see that the code runs for sometime, then completes it's execution, signifying that the delay function worked and delayed execution of CPU for some time.\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
 \newpage
 
 \section[Move block of data from location X to location Y]{Assignment 4} %[toc content]{text content}
@@ -177,7 +177,7 @@
         \end{figure}
     \subsection{Conclusion}
         We see that all the data from location 2500(X) to (2500 + Z) has been copied to location 4500(Y) to (4500 + Z) [Z is 5 in \ref{fg3a} and 10 in \ref{fg3b}].\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
 \newpage
 
 \section[Check if number odd]{Assignment 5} %[toc content]{text content}
@@ -212,7 +212,7 @@
         \end{figure}
     \subsection{Conclusion}
         We see that in case of odd number, C is 1 after execution and in case of even number, C is 0 after execution.\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
 \newpage
 
 \section[Multi-Byte Addition]{Assignment 6} %[toc content]{text content}
@@ -247,7 +247,7 @@
         \end{figure}
     \subsection{Conclusion}
         We see that the result of multi-byte addition is correct.\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
 \newpage
 
 \section[Fast Multiplication Subroutine]{Assignment 7} %[toc content]{text content}
@@ -272,7 +272,31 @@
     \subsection{Conclusion}
         $9\times15=135 = 0087H$\\
         We see that the result in HL register is same as what we expected.\\
-        Hence the Program is working as expected.
+        Hence the program is working as expected.
+\newpage
+
+\section[Sort Subroutine]{Assignment 8} %[toc content]{text content}
+    \subsection{Objective}
+        Write a subroutine to sort a 5-element byte array (Any algorithm will do)
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        We use bubble sort algorithm to sort the array.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to bubble sort array]{./../Programs/Assignment 3/3_2_bubble_sort_5_elem.asm}
+        \newpage
+    \subsection{Experimentation}
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.7\textwidth]{Assignment 3/2_sort/mem_output.png}
+            \caption{Register configuration after execution (look from address 2500)}
+            \label{fg7}
+        \end{figure}
+    \subsection{Conclusion}
+        We see that after program execution, values of address 2500 - 2504 is sorted in ascending order.\\
+        Hence the program is working as expected.
 \newpage
 
 \end{document}
