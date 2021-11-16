@@ -1,16 +1,14 @@
-	   MVI E,0F
+	   LXI D,000F	;15 in hex
 	   MVI A,09
-	   MVI D,00
-	   LXI H,0000
-	   MVI B,08
+	   LXI H,0000 	;result will be in HL
+	   MVI B,08		;8 bit data, 8 rotations to iterate through all the bits of A
 
-LOOP:	   DAD H	// HL = HL + HL
-	   RAL	// rotate AC left(<-), leftmost value in C
+LP:    DAD H	;HL = HL + HL (multiply by 2)(assume left shift)
+	   RAL		;rotate A left(<-), leftmost value in C flag
 	   JNC SKIP
-	   DAD D
-
-SKIP:	   DCR B
-	   JNZ LOOP
+	   DAD D	;if 1 in A's bit, we add D also
+SKIP:  DCR B
+	   JNZ LP
 	   SHLD 2500
 	   HLT
-// ans in HL register
+;ans in HL register
