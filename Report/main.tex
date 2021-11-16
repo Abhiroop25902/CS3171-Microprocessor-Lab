@@ -60,159 +60,160 @@
 \setcounter{page}{1}
 % ==================MAIN TEXT========================
 \section[Find out the sum of the first 30 natural numbers]{Assignment 1} %[toc content]{text content}
-\subsection{Objective}
-Find out the sum of the first 30 natural numbers.
-\subsection{Tool/Experimental setup considered}
-\begin{itemize}
-    \item Jubin's 8085 Simulator
-\end{itemize}
-\subsection{Procedure}
-We know that
-\[1 + 2 + 3 + ... + 29 + 30 = \frac{30 \times 29}{2} = 435 =  01D1H\]
-This result is not possible to store in a single register, so we need to use register pair to store the result.
-\subsection{Program}
-
-\lstinputlisting[caption=assembly program to find sum of the first 30 natural numbers]{./../Programs/Assignment 1/1_1_sum till 30.asm}
-\subsection{Experimentation}
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{Assignment 1/1_sum_till_30/registor.png}
-    \caption{Register configuration after execution}
-    \label{fg1}
-\end{figure}
-\subsection{Conclusion}
-We see that after the execution of program, the data stored in HL register pair is 01D1H, which is the hexadecimal value of 435.\\
-Hence the Program is working as expected
+    \subsection{Objective}
+        Find out the sum of the first 30 natural numbers.
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        We know that
+        \[1 + 2 + 3 + ... + 29 + 30 = \frac{30 \times 29}{2} = 435 =  01D1H\]
+        This result is not possible to store in a single register, so we need to use register pair to store the result.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to find sum of the first 30 natural numbers]{./../Programs/Assignment 1/1_1_sum till 30.asm}
+    \subsection{Experimentation}
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.7\textwidth]{Assignment 1/1_sum_till_30/registor.png}
+            \caption{Register configuration after execution}
+            \label{fg1}
+        \end{figure}
+    \subsection{Conclusion}
+        We see that after the execution of program, the data stored in HL register pair is 01D1H, which is the hexadecimal value of 435.\\
+        Hence the Program is working as expected.
 \newpage
 
 \section[Find minimum and maximum number in 10-byte unsigned array]{Assignment 2} %[toc content]{text content}
-\subsection{Objective}
-From an array of 10-byte size integers (unsigned) find out the maximum and minimum.
-\subsection{Tool/Experimental setup considered}
-\begin{itemize}
-    \item Jubin's 8085 Simulator
-\end{itemize}
-\subsection{Procedure}
-The idea is to linearly iterate through all the values of the arr, and update the register for minimum(C) and maximum(B) values.
-\subsection{Program}
-\lstinputlisting[caption=assembly program to find minimum and maximum number in 10-byte unsigned array]{./../Programs/Assignment 1/1_2_min-max of 10 size array.asm}
-\subsection{Experimentation}
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.4\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Assignment 1/2_min-max-10-elem/test 1.png}
-        \caption{result for \{5,2,3,4,F,C,7,A,B,1\}}
-        \label{fg2a}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.4\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Assignment 1/2_min-max-10-elem/test 2.png}
-        \caption{result for \{F,E,D,C,B,A,9,8,7,6\}}
-        \label{fg2b}
-    \end{subfigure}
-    \caption{Result for different inputs}
-    \label{fg2}
-\end{figure}
-\subsection{Conclusion}
-We see that that after program execution, B has the maximum value of array, and C has the minimum value of the array.\\
-Hence the Program is working as expected
+    \subsection{Objective}
+        From an array of 10-byte size integers (unsigned) find out the maximum and minimum.
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        The idea is to linearly iterate through all the values of the arr, and update the register for minimum(C) and maximum(B) values.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to find minimum and maximum number in 10-byte unsigned array]{./../Programs/Assignment 1/1_2_min-max of 10 size array.asm}
+    \subsection{Experimentation}
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}[b]{0.4\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Assignment 1/2_min-max-10-elem/test 1.png}
+                \caption{result for \{5,2,3,4,F,C,7,A,B,1\}}
+                \label{fg2a}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.4\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Assignment 1/2_min-max-10-elem/test 2.png}
+                \caption{result for \{F,E,D,C,B,A,9,8,7,6\}}
+                \label{fg2b}
+            \end{subfigure}
+            \caption{Result for different inputs}
+            \label{fg2}
+        \end{figure}
+    \subsection{Conclusion}
+        We see that that after program execution, B has the maximum value of array, and C has the minimum value of the array.\\
+        Hence the Program is working as expected.
 \newpage
 
 \section[Delay Procedure]{Assignment 3} %[toc content]{text content}
-\subsection{Objective}
-Write a routine that produces a delay. The delay value must be passed to register pair DE.
-\subsection{Tool/Experimental setup considered}
-\begin{itemize}
-    \item Jubin's 8085 Simulator
-\end{itemize}
-\subsection{Procedure}
-Idea is to assign DE a very big value (say FFFF), and decrement it in a loop till DE becomes 0 to produce delay in execution.
-\subsection{Program}
-\lstinputlisting[caption=assembly program to produce delay]{./../Programs/Assignment 1/1_3_delay.asm}
-% \subsection{Experimentation}
-%     \begin{center}
-%         \fbox{\includegraphics[width=0.7\textwidth]{Assignment 1/2_min-max-10-elem/register-config.png}}\\
-%     \end{center}
-\subsection{Conclusion}
-We see that the code runs for sometime, then completes it's execution, signifying that the delay function worked and delayed execution of CPU for some time.\\
-Hence the Program is working as expected
+    \subsection{Objective}
+        Write a routine that produces a delay. The delay value must be passed to register pair DE.
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        Idea is to assign DE a very big value (say FFFF), and decrement it in a loop till DE becomes 0 to produce delay in execution.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to produce delay]{./../Programs/Assignment 1/1_3_delay.asm}
+    % \subsection{Experimentation}
+    %     \begin{center}
+    %         \fbox{\includegraphics[width=0.7\textwidth]{Assignment 1/2_min-max-10-elem/register-config.png}}\\
+    %     \end{center}
+    \subsection{Conclusion}
+        We see that the code runs for sometime, then completes it's execution, signifying that the delay function worked and delayed execution of CPU for some time.\\
+        Hence the Program is working as expected.
 \newpage
 
 \section[Move block of data from location X to location Y]{Assignment 4} %[toc content]{text content}
-\subsection{Objective}
-Write a subroutine to move a block of bytes from location X to location Y.\\
-Note that the caller would specify
-\begin{itemize}
-    \item X, the source address
-    \item Y, the destination address
-    \item Z, the block size
-\end{itemize}
-Note that X, Y and Z are 16-bit quantities.
-\subsection{Tool/Experimental setup considered}
-\begin{itemize}
-    \item Jubin's 8085 Simulator
-\end{itemize}
-\subsection{Procedure}
-Start reading numbers from location X and save them to location Y, after each iteration, update address of X and Y to next byte. Do this Z times and the whole block is copied.
-\subsection{Program}
-\lstinputlisting[caption=assembly program to move block]{./../Programs/Assignment 2/2_1_move_array.asm}
-\newpage
-\subsection{Experimentation}
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Assignment 2/1_Move Blocks/5 data copy.png}
-        \caption{result for \{4,2,6,7,8\}}
-        \label{fg3a}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Assignment 2/1_Move Blocks/10 data copy.png}
-        \caption{result for \{4,2,6,7,8,1,2,4,5,6\}}
-        \label{fg3b}
-    \end{subfigure}
-    \caption{Result for different inputs}
-    \label{fg3}
-\end{figure}
-\subsection{Conclusion}
-We see that all the data from location 2500(X) to (2500 + Z) has been copied to location 4500(Y) to (4500 + Z) [Z is 5 in \ref{fg3a} and 10 in \ref{fg3b}].\\
-Hence the Program is working as expected
+    \subsection{Objective}
+        Write a subroutine to move a block of bytes from location X to location Y.\\
+        Note that the caller would specify
+        \begin{itemize}
+            \item X, the source address
+            \item Y, the destination address
+            \item Z, the block size
+        \end{itemize}
+        Note that X, Y and Z are 16-bit quantities.
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        Start reading numbers from location X and save them to location Y, after each iteration, update address of X and Y to next byte. Do this Z times and the whole block is copied.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to move block]{./../Programs/Assignment 2/2_1_move_array.asm}
+        \newpage
+    \subsection{Experimentation}
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}[b]{0.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Assignment 2/1_Move Blocks/5 data copy.png}
+                \caption{result for \{4,2,6,7,8\}}
+                \label{fg3a}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Assignment 2/1_Move Blocks/10 data copy.png}
+                \caption{result for \{4,2,6,7,8,1,2,4,5,6\}}
+                \label{fg3b}
+            \end{subfigure}
+            \caption{Result for different inputs}
+            \label{fg3}
+        \end{figure}
+    \subsection{Conclusion}
+        We see that all the data from location 2500(X) to (2500 + Z) has been copied to location 4500(Y) to (4500 + Z) [Z is 5 in \ref{fg3a} and 10 in \ref{fg3b}].\\
+        Hence the Program is working as expected.
 \newpage
 
 \section[Check if number odd]{Assignment 5} %[toc content]{text content}
-\subsection{Objective}
-Write a function isODD(unsigned n) in assembly that takes an unsigned integer (a byte) and determines if it is odd (returns 1) or 0 if it is even.
-\subsection{Tool/Experimental setup considered}
-\begin{itemize}
-    \item Jubin's 8085 Simulator
-\end{itemize}
-\subsection{Procedure}
-Odd numbers will always be in the form of $2x + 1$, which means that they will have 1 as their LSB.\\
-So we just check if $number \land 01$ is 1 or not. If the result is 1, then the number is odd, else it is even.
-\subsection{Program}
-\lstinputlisting[caption=assembly program to move block]{./../Programs/Assignment 2/2_2_is_Odd.asm}
-\subsection{Experimentation}
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Assignment 2/2_isodd/odd73.png}
-        \caption{result for odd number(73)}
-        \label{fg4a}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.49\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Assignment 2/2_isodd/even74.png}
-        \caption{result for even number(73)}
-        \label{fg4b}
-    \end{subfigure}
-    \caption{Result for both even and odd numbers}
-    \label{fg4}
-\end{figure}
-\subsection{Conclusion}
-We see that in case of odd number, C is 1 after execution and in case of even number, C is 0 after execution.\\
-Hence the Program is working as expected
+        \subsection{Objective}
+            Write a function isODD(unsigned n) in assembly that takes an unsigned integer (a byte) and determines if it is odd (returns 1) or 0 if it is even.
+        \subsection{Tool/Experimental setup considered}
+            \begin{itemize}
+                \item Jubin's 8085 Simulator
+            \end{itemize}
+        \subsection{Procedure}
+            Odd numbers will always be in the form of $2x + 1$, which means that they will have 1 as their LSB.\\
+            So we just check if $number \land 01$ is 1 or not. If the result is 1, then the number is odd, else it is even.
+        \subsection{Program}
+            \lstinputlisting[caption=assembly program to move block]{./../Programs/Assignment 2/2_2_is_Odd.asm}
+        \subsection{Experimentation}
+            \begin{figure}[h!]
+                \centering
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \includegraphics[width=\linewidth]{Assignment 2/2_isodd/odd73.png}
+                    \caption{result for odd number(73)}
+                    \label{fg4a}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \includegraphics[width=\linewidth]{Assignment 2/2_isodd/even74.png}
+                    \caption{result for even number(73)}
+                    \label{fg4b}
+                \end{subfigure}
+                \caption{Result for both even and odd numbers}
+                \label{fg4}
+            \end{figure}
+        \subsection{Conclusion}
+            We see that in case of odd number, C is 1 after execution and in case of even number, C is 0 after execution.\\
+            Hence the Program is working as expected.
 \newpage
+
+
 \end{document}
