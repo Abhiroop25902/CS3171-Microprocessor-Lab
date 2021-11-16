@@ -33,7 +33,7 @@
 	tabsize=4,                          % tab = (tabsize) * space
     columns=flexible,                   % two options, fixed or flexible
     keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-    morekeywords={*,MVI, DAD, INX, DCR, LXI, DCX, ORA, LDAX,ANI,...},               % if you want to add more keywords to the set
+    morekeywords={*,MVI, DAD, INX, DCR, LXI, DCX, ORA, LDAX,ANI,INR,LHLD,...},               % if you want to add more keywords to the set
     rulecolor=\color{black},            % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
 	showspaces=false,                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
     showstringspaces=false,             % underline spaces within strings only
@@ -215,5 +215,38 @@
             Hence the Program is working as expected.
 \newpage
 
-
+\section[Multi-Byte Addition]{Assignment 6} %[toc content]{text content}
+        \subsection{Objective}
+        Write a function to add two multi-byte numbers stored in location X and Y. The result is stored in X. Pass a parameter Z indicating the no. of bytes to be added.
+        \subsection{Tool/Experimental setup considered}
+            \begin{itemize}
+                \item Jubin's 8085 Simulator
+            \end{itemize}
+        \subsection{Procedure}
+            We simulate the default way of adding numbers, we go from right to left, adding (with carry) the numbers and adding it to stack, then we keep popping the elements and save it in X.
+        \subsection{Program}
+            \lstinputlisting[caption=assembly program to move block]{./../Programs/Assignment 2/2_3_byte_add_right_to_left.asm}
+            \newpage
+        \subsection{Experimentation}
+            \begin{figure}[h!]
+                \centering
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \includegraphics[width=\linewidth]{Assignment 2/3_multibyte_add/FFFFFF_FFFFFF.png}
+                    \caption{result for \{FF,FF,FF\} + \{FF,FF,FF\}}
+                    \label{fg5a}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \includegraphics[width=\linewidth]{Assignment 2/3_multibyte_add/01020304_FFFEFCFA.png}
+                    \caption{result for \{01,02,03,04\} + \{FF,FE,FC,FA\}}
+                    \label{fg5b}
+                \end{subfigure}
+                \caption{Result of multi-byte addition (start looking from address 8500)}
+                \label{fg5}
+            \end{figure}
+        \subsection{Conclusion}
+            We see that the result of multi-byte addition is correct.\\
+            Hence the Program is working as expected.
+\newpage
 \end{document}
