@@ -33,7 +33,7 @@
 	tabsize=4,                          % tab = (tabsize) * space
     columns=flexible,                   % two options, fixed or flexible
     keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-    morekeywords={*,MVI, DAD, INX, DCR, LXI, DCX, ORA, LDAX,ANI,INR,LHLD,RAL,...},               % if you want to add more keywords to the set
+    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,...},               % if you want to add more keywords to the set
     rulecolor=\color{black},            % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
 	showspaces=false,                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
     showstringspaces=false,             % underline spaces within strings only
@@ -296,6 +296,30 @@
         \end{figure}
     \subsection{Conclusion}
         We see that after program execution, values of address 2500 - 2504 is sorted in ascending order.\\
+        Hence the program is working as expected.
+\newpage
+
+\section[Subroutine to save Register Status]{Assignment 9} %[toc content]{text content}
+    \subsection{Objective}
+    Write a sub-routine to store all the registers (A, F, B, C, D, E, H, L, I, SPL, SPH, PCL, PC, in that order) starting from location MYREGISTERS.
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    % \subsection{Procedure}
+    %     We use bubble sort algorithm to sort the array.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to bubble sort array]{./../Programs/Assignment 3/3_3_store_all_reg.asm}
+        \newpage
+    \subsection{Experimentation}
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.7\textwidth]{Assignment 3/3_save_reg_config/mem.png}
+            \caption{Register configuration after execution (look from address 2000)}
+            \label{fg8}
+        \end{figure}
+    \subsection{Conclusion}
+        We see that after program execution, all the predefined value of registers are stored in memory starting from address 2000.\\
         Hence the program is working as expected.
 \newpage
 
