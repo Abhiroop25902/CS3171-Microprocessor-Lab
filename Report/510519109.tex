@@ -33,7 +33,7 @@
 	tabsize=4,                          % tab = (tabsize) * space
     columns=flexible,                   % two options, fixed or flexible
     keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,...},               % if you want to add more keywords to the set
+    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,CPI,...},               % if you want to add more keywords to the set
     rulecolor=\color{black},            % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
 	showspaces=false,                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
     showstringspaces=false,             % underline spaces within strings only
@@ -301,7 +301,7 @@
 
 \section[Subroutine to save Register Status]{Assignment 9} %[toc content]{text content}
     \subsection{Objective}
-    Write a sub-routine to store all the registers (A, F, B, C, D, E, H, L, I, SPL, SPH, PCL, PC, in that order) starting from location MYREGISTERS.
+        Write a sub-routine to store all the registers (A, F, B, C, D, E, H, L, I, SPL, SPH, PCL, PC, in that order) starting from location MYREGISTERS.
     \subsection{Tool/Experimental setup considered}
         \begin{itemize}
             \item Jubin's 8085 Simulator
@@ -309,7 +309,7 @@
     % \subsection{Procedure}
     %     We use bubble sort algorithm to sort the array.
     \subsection{Program}
-        \lstinputlisting[caption=assembly program to bubble sort array]{./../Programs/Assignment 3/3_3_store_all_reg.asm}
+        \lstinputlisting[caption=assembly program to store register configuration]{./../Programs/Assignment 3/3_3_store_all_reg.asm}
         \newpage
     \subsection{Experimentation}
         \begin{figure}[h!]
@@ -320,6 +320,44 @@
         \end{figure}
     \subsection{Conclusion}
         We see that after program execution, all the predefined value of registers are stored in memory starting from address 2000.\\
+        Hence the program is working as expected.
+\newpage
+
+\section[POST to check stuck at 1 fault]{Assignment 10} %[toc content]{text content}
+    \subsection{Objective}
+        Implement a POST or power-on-self-test  where each RAM location is tested for stuck-at-zero or stuck-at-one fault. 
+        In your case the function takes the start address of the RAM block and the block size in bytes.
+        The function sets CY in case of any error (else it is set to 0); HL contains the faulty location and Acc contains 0 for stuck at zero fault and 1 for stuck at one fault.
+        [Note: usually there wont be any error as your RAM is not faulty, so direct checking may not set CY flag]
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        We iteratively go through STARTLOC to (STARTLOC + LEN) and check if any value is 1 or not, if it is, we exit from there setting the C flag.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program for POST for stuck at 1 fault]{./../Programs/Assignment 4/4_1_POST.asm}
+        \newpage
+    \subsection{Experimentation}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Assignment 4/1_POST/yes_stuck.png}
+            \caption{result of the program}
+            \label{fg9a}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Assignment 4/1_POST/no_stuck.png}
+            \caption{result of the program if we comment line 4 and 5}
+            \label{fg9b}
+        \end{subfigure}
+        \caption{Result of Program Execution}
+        \label{fg9}
+    \end{figure}
+    \subsection{Conclusion}
+        We see that if there exist a 1 in some memory location, the program sets Cy flag and HL register to stuck address; when there is no 1 in whole array, C is unset\\
         Hence the program is working as expected.
 \newpage
 
