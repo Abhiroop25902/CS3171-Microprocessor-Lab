@@ -1,4 +1,4 @@
-false
+true
 # ORG 003CH
 	   JMP COUNT
 # ORG 0000H

@@ -14,7 +14,7 @@ POST:  	MOV A,M
 ;A will be 0 or 1, if 1 we need to exit
 ;A zero -> A - 1 < 0, Cy =1
 ;A one -> A - 1 = 0, Z = 1, we exit here
-	   	JZ ERR	;if 1 found, we exit are set Cy 1 directly
+	   	JZ ERR		;if 1 found, we exit are set Cy 1 directly
 	   	INX H
 	   	DCR B
 	   	JNZ POST
@@ -23,9 +23,9 @@ POST:  	MOV A,M
 	   	RET
 ;we reach here when 1 found
 
-ERR:	STC	;set Cy 1
+ERR:	STC			;set Cy 1
 	   	RET
 ;we reach here if no 1 found but Cy 1 due to previous CMP stuff
 
-REVERT:	CMC	;complements Cy, if Cy 1, Cy becomes 0
+REVERT:	CMC			;complements Cy, if Cy 1, Cy becomes 0
 	   	RET

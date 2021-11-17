@@ -15,24 +15,24 @@
 ;Y->DE
 ;destroys -> B
 # SAVELOC EQU 1500
-ADDB:  SHLD SAVELOC	;save start of X to 1500 addr to be read later
-	   MVI B,00		;set B as 0, will act as counter afterward
+ADDB:  SHLD SAVELOC		;save start of X to 1500 addr to be read later
+	   MVI B,00			;set B as 0, will act as counter afterward
 ;now we need to put HL and DE pair to back of array
-	   XCHG			;swap HL and DE
-	   DAD B		;HL = HL + BC [with B = 0] [HL now is DE]
+	   XCHG				;swap HL and DE
+	   DAD B			;HL = HL + BC [with B = 0] [HL now is DE]
 	   DCX H
-	   XCHG			;swap HL and DE again
-	   DAD B		;HL = HL + BC
+	   XCHG				;swap HL and DE again
+	   DAD B			;HL = HL + BC
 	   DCX H
 ;now both DE and HL are in the end of their array
-LOOP:  LDAX D	;A -> Mem[DE]
-	   ADC M	;A -> A+ Mem[HL] + carry
-	   PUSH PSW	;push AF data to SP, first A, then F
+LOOP:  LDAX D			;A -> Mem[DE]
+	   ADC M			;A -> A+ Mem[HL] + carry
+	   PUSH PSW			;push AF data to SP, first A, then F
 	   INR B
 	   DCX H
 	   DCX D
 	   DCR C
-	   JNZ LOOP	;jump to Loop till C!=0
+	   JNZ LOOP			;jump to Loop till C!=0
 ;now addition done and saved to Stack, need to check if carry exist
 	   JNC SKIP
 ;these will execute only when there is a carry
@@ -40,9 +40,9 @@ LOOP:  LDAX D	;A -> Mem[DE]
 	   PUSH PSW
 	   INR B
 
-SKIP:  LHLD SAVELOC   ;read saved LH data to go to start of X
+SKIP:  LHLD SAVELOC   	;read saved LH data to go to start of X
 
-L1:	   POP PSW	;pop SP to AF, first F then A
+L1:	   POP PSW			;pop SP to AF, first F then A
 	   MOV M,A
 	   INX H
 	   DCR B
