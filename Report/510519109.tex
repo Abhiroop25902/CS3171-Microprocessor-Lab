@@ -33,7 +33,7 @@
 	tabsize=4,                          % tab = (tabsize) * space
     columns=flexible,                   % two options, fixed or flexible
     keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,CPI,RAR,RNC,...},               % if you want to add more keywords to the set
+    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,CPI,RAR,RNC,EI,...},               % if you want to add more keywords to the set
     rulecolor=\color{black},            % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
 	showspaces=false,                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
     showstringspaces=false,             % underline spaces within strings only
@@ -437,6 +437,49 @@
     \subsection{Conclusion}
         We created a program which will calculate the time period of a rectangular wave as follows
         \[T= BC*(30*1/3 + 1ms) = BC*11ms \pm 2 ms\]
+\newpage
+
+\section[Interrupt Service Routine]{Assignment 13} %[toc content]{text content}
+    \subsection{Objective}
+        \begin{itemize}
+            \item Using auto vectored input RST 7.5 prepare a scheme to count the number of key-press done at this interrupting input.
+            \item The main routine after initialization of the interrupt mechanism waits in an infinite loop waiting for the key-press. 
+            \item On a key-press (that simulates as if you have excited the RST 7.5 input) it increases a counter at a predefined memory location (used to hold the count value).
+        \end{itemize}
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    \subsection{Procedure}
+        \begin{enumerate}
+            \item We use an RST 7.5 interrupt line to call a procedure every time we get an interrupt.
+            \item The Problem is that the computer is so fast that it can take in multiple interrupt in a single button press(click).
+            \item To solve this, we disable the interrupt mechanism inside the Interrupt Service Routine, and also add a small delay to make the computer "wait" for the key-press to end.
+        \end{enumerate}
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program to find the number of key presses during the program execution]{./../Programs/Assignment 5/5_1_ISR.asm}
+        \newpage
+    \subsection{Experimentation}
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}[b]{0.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Assignment 5/1_ISR/4-click.png}
+                \caption{register config for 4 interrupt clicks}
+                \label{fg11a}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{Assignment 5/1_ISR/12-click.png}
+                \caption{register config for 12 interrupt clicks}
+                \label{fg11b}
+            \end{subfigure}
+            \caption{Result of Program Execution (look at DE register pair)}
+            \label{fg11}
+        \end{figure}
+    \subsection{Conclusion}
+        We see that the value in DE register pair after program stop matches with the number of clicks made for interrupts.\\
+        Hence the program is working as expected.
 \newpage
 
 \end{document}

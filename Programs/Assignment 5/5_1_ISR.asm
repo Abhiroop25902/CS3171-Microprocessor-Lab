@@ -1,24 +1,23 @@
 # ORG 003CH
-	   JMP COUNT
+	   		JMP COUNT
 # ORG 0000H
-	   MVI A,0B	// 00001011
-	   SIM
-	   EI
-	   LXI D,0000
+			MVI A,0B	;00001011B
+			SIM
+			EI
+			LXI D,0000
 
-INFLOOP:	   JMP INFLOOP
-	   HLT
+INFLOOP:	JMP INFLOOP
+	   		HLT
 
-COUNT:	   DI
-	   INX D
-	   CALL DEL125
-	   EI
-	   RET
-DEL125:
-	   LXI B,3F93
-DEL125Loop:
-	   DCX B
-	   MOV A,B
-	   ORA C
-	   JNZ DEL125Loop
-	   RET
+COUNT:	   	DI
+			INX D
+			CALL DEL125
+			EI
+			RET
+
+DEL125:		LXI B,3F93
+DEL125Loop:	DCX B
+			MOV A,B
+			ORA C
+			JNZ DEL125Loop
+			RET
