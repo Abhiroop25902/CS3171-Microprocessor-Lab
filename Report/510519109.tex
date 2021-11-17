@@ -33,7 +33,7 @@
 	tabsize=4,                          % tab = (tabsize) * space
     columns=flexible,                   % two options, fixed or flexible
     keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,CPI,...},               % if you want to add more keywords to the set
+    morekeywords={*,MVI,DAD,INX,DCR,LXI,DCX,ORA,LDAX,ANI,INR,LHLD,RAL,SIM,RIM,XTHL,CPI,RAR,RNC,...},               % if you want to add more keywords to the set
     rulecolor=\color{black},            % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
 	showspaces=false,                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
     showstringspaces=false,             % underline spaces within strings only
@@ -358,6 +358,41 @@
     \end{figure}
     \subsection{Conclusion}
         We see that if there exist a 1 in some memory location, the program sets Cy flag and HL register to stuck address; when there is no 1 in whole array, C is unset\\
+        Hence the program is working as expected.
+\newpage
+
+\section[Binary Search]{Assignment 11} %[toc content]{text content}
+    \subsection{Objective}
+        Implement a binary search ---- the function would take the start address and no. of elements in the array. If successful the function resets CY flag and the HL pair points to the element found else CY is set and the value in HL pair is irrelevant. 
+    \subsection{Tool/Experimental setup considered}
+        \begin{itemize}
+            \item Jubin's 8085 Simulator
+        \end{itemize}
+    % \subsection{Procedure}
+    %     We iteratively go through STARTLOC to (STARTLOC + LEN) and check if any value is 1 or not, if it is, we exit from there setting the C flag.
+    \subsection{Program}
+        \lstinputlisting[caption=assembly program for the implementation of Binary Search]{./../Programs/Assignment 4/4_2_Binary_Search.asm}
+        \newpage
+    \subsection{Experimentation}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Assignment 4/2_BS/found.png}
+            \caption{result of the program when X is in array}
+            \label{fg10a}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{Assignment 4/2_BS/not_found.png}
+            \caption{result of the program when X is not in array}
+            \label{fg10b}
+        \end{subfigure}
+        \caption{Result of Program Execution}
+        \label{fg10}
+    \end{figure}
+    \subsection{Conclusion}
+        We see that when X is in array, Cy flag is set and HL points to the data's address in array; but then X is not present, Cy flag is not set.\\
         Hence the program is working as expected.
 \newpage
 
