@@ -129,10 +129,6 @@
         Idea is to assign DE a very big value (say FFFF), and decrement it in a loop till DE becomes 0 to produce delay in execution.
     \subsection{Program}
         \lstinputlisting[caption=assembly program to produce delay]{./../Programs/Assignment 1/1_3_delay.asm}
-    % \subsection{Experimentation}
-    %     \begin{center}
-    %         \fbox{\includegraphics[width=0.7\textwidth]{Assignment 1/2_min-max-10-elem/register-config.png}}\\
-    %     \end{center}
     \subsection{Conclusion}
         We see that the code runs for sometime, then completes it's execution, signifying that the delay function worked and delayed execution of CPU for some time.\\
         Hence the program is working as expected.
@@ -306,8 +302,6 @@
         \begin{itemize}
             \item Jubin's 8085 Simulator
         \end{itemize}
-    % \subsection{Procedure}
-    %     We use bubble sort algorithm to sort the array.
     \subsection{Program}
         \lstinputlisting[caption=assembly program to store register configuration]{./../Programs/Assignment 3/3_3_store_all_reg.asm}
         \newpage
@@ -368,8 +362,6 @@
         \begin{itemize}
             \item Jubin's 8085 Simulator
         \end{itemize}
-    % \subsection{Procedure}
-    %     We iteratively go through STARTLOC to (STARTLOC + LEN) and check if any value is 1 or not, if it is, we exit from there setting the C flag.
     \subsection{Program}
         \lstinputlisting[caption=assembly program for the implementation of Binary Search]{./../Programs/Assignment 4/4_2_Binary_Search.asm}
         \newpage
@@ -399,10 +391,6 @@
 \section[Time Period of a rectangular waveform signal]{Assignment 12} %[toc content]{text content}
     \subsection{Objective}
     Suppose that you are reading a bit of an input port (say, PORT 0) to which the output of a function generator, producing a rectangular wave, is connected. Measure the ON  of this repetitive rectangular waveform time in terms of millisecond.
-    % \subsection{Tool/Experimental setup considered}
-    %     \begin{itemize}
-    %         \item Jubin's 8085 Simulator
-    %     \end{itemize}
     \subsection{Procedure}
         \begin{enumerate}
             \item We first wait in an infinite loop, waiting for the signal to turn 0 (in case we started program when signal was already 1).
@@ -416,24 +404,6 @@
         \end{enumerate}
     \subsection{Program}
         \lstinputlisting[caption=assembly program to calculate time period of rectangular wave]{./../Programs/Assignment 4/4_3_Port.asm}
-    % \subsection{Experimentation}
-    % \begin{figure}[h!]
-    %     \centering
-    %     \begin{subfigure}[b]{0.49\linewidth}
-    %         \centering
-    %         \includegraphics[width=\linewidth]{Assignment 4/2_BS/found.png}
-    %         \caption{result of the program when X is in array}
-    %         \label{fg10a}
-    %     \end{subfigure}
-    %     \begin{subfigure}[b]{0.49\linewidth}
-    %         \centering
-    %         \includegraphics[width=\linewidth]{Assignment 4/2_BS/not_found.png}
-    %         \caption{result of the program when X is not in array}
-    %         \label{fg10b}
-    %     \end{subfigure}
-    %     \caption{Result of Program Execution}
-    %     \label{fg10}
-    % \end{figure}
     \subsection{Conclusion}
         We created a program which will calculate the time period of a rectangular wave as follows
         \[T= BC*(30*1/3 + 1ms) = BC*11ms \pm 2 ms\]
@@ -480,6 +450,54 @@
     \subsection{Conclusion}
         We see that the value in DE register pair after program stop matches with the number of clicks made for interrupts.\\
         Hence the program is working as expected.
+\newpage
+
+\section[Hardware Debouncing]{Assignment 14} %[toc content]{text content}
+    \subsection{Objective}
+        Draw the hardware for implementing RST 7.5 based key-press counting -- don't forget to implement h/w based key debouncing problem.
+    \subsection{Procedure}
+        We previously used software method (using delay) to mitigate debouncing, now we will look into the method to reducing debouncing hardware wise.\par
+        One of the simplest hardware-based switch debounce solutions employs a resistor-capacitor (RC) network in conjunction with a switch (i.e our key).
+
+        \begin{figure}[h!]
+            \centering
+            \fbox{\includegraphics[width=0.8\textwidth]{Assignment 5/2_hardware debouncing/default circuit.png}}
+            \caption{Hardware based Switch Debouncing}
+            \label{fg12}
+        \end{figure}
+
+        When the key is not pressed, there is a way for the power to go from +ve to ground via R1, D1 and C1, which keeps $V_c$ as high, and $V_{sh}$ as low as shown in \ref{fg13a}.\par
+        When the key is pressed, the circuit is shorted due to the new circuit and $V_c$ becomes low, making $V_{sh}$ as high as shown in \ref{fg13b}\par
+        The capacitor is used to remove the false signals due to debouncing and providing a smoother gradient towards On and Off as shown in \ref{fg14}
+
+        \begin{figure}[h!]
+            \centering
+            \begin{subfigure}[b]{0.49\linewidth}
+                \centering
+                \fbox{\includegraphics[width=0.95\linewidth]{Assignment 5/2_hardware debouncing/not pressed.png}}
+                \caption{Circuit when key is not pressed}
+                \label{fg13a}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.49\linewidth}
+                \centering
+                \fbox{\includegraphics[width=0.95\linewidth]{Assignment 5/2_hardware debouncing/pressed.png}}
+                \caption{Circuit when key is pressed}
+                \label{fg13b}
+            \end{subfigure}
+            \caption{Hardware based Switch Debouncing}
+            \label{fg13}
+        \end{figure}
+    \newpage
+        
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=\textwidth]{Assignment 5/2_hardware debouncing/graph.png}
+            \caption{Hardware based Switch Debouncing}
+            \label{fg14}
+        \end{figure}
+
+    \subsection{Conclusion}
+        We discussed hardware based debouncing mechanism to reduce errors while taking input.
 \newpage
 
 \end{document}
